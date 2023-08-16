@@ -1,0 +1,23 @@
+CREATE TABLE pais(
+	idPais int AUTO_INCREMENT,
+	nombrePais varchar(50),
+	PRIMARY KEY(idPais)
+);
+CREATE TABLE ciudad(
+	idCiu int,
+	nomnbreCiu varchar(30),
+	idDepFk int(11),
+	PRIMARY KEY(idCiudad),
+	CONSTRAINT fk_Ciu_Dep FOREIGN KEY (idDepFk) REFERENCES departamento(idDep)
+);
+CREATE TABLE departamento(
+	idDep int,
+	nombreDep varchar(30),
+	idPaisFk int(11),
+	PRIMARY KEY(idDep),
+	CONSTRAINT fk_Dep_pais FOREIGN KEY (idPaisFk) REFERENCES pais(idPais)
+);
+ALTER TABLE departamento ADD PRIMARY KEY(idDep);
+ALTER TABLE departamento MODIFY idDep int AUTO_INCREMENT=0;
+ALTER TABLE departamento ADD 
+CONSTRAINT fk_Dep_pais FOREIGN KEY (idPaisFk) REFERENCES pais(idPais);
